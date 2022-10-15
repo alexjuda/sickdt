@@ -1,5 +1,5 @@
 from sickdt import core
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 
 
 class TestNow:
@@ -24,19 +24,40 @@ class TestUnix:
 
             assert ts2 == ts1
 
-        @staticmethod
-        def test_instant_ts_instant():
-            instant1 = datetime(
-                year=2022,
-                month=10,
-                day=15,
-                hour=21,
-                minute=37,
-                second=25,
-                microsecond=42,
-                tzinfo=timezone.utc,
-            )
-            ts = core.unix(instant1)
-            instant2 = core.from_unix(ts)
+        class TestInstantTsInstant:
+            @staticmethod
+            def test_initial_utc():
+                instant1 = datetime(
+                    year=2022,
+                    month=10,
+                    day=15,
+                    hour=21,
+                    minute=37,
+                    second=25,
+                    microsecond=42,
+                    tzinfo=timezone.utc,
+                )
+                ts = core.unix(instant1)
+                instant2 = core.from_unix(ts)
 
-            assert instant2 == instant1
+                assert instant2 == instant1
+
+            @staticmethod
+            def test_non_utc():
+                start_tz = timezone(timedelta(hours=2))
+                instant1 = datetime(
+                    year=2022,
+                    month=10,
+                    day=15,
+                    hour=21,
+                    minute=37,
+                    second=25,
+                    microsecond=42,
+                    tzinfo=start_tz,
+                )
+                ts = core.unix(instant1)
+                instant2 = core.from_unix(ts)
+
+                assert instant2.astimezone(timezone.utc) == instant1.astimezone(
+                    timezone.utc
+                )
