@@ -6,7 +6,7 @@ def now():
 
 
 def from_unix(seconds: float) -> datetime:
-    return datetime.fromtimestamp(seconds).replace(tz=timezone.utc)
+    return datetime.fromtimestamp(seconds).replace(tzinfo=timezone.utc)
 
 
 def _ensure_tz(dt: datetime):
