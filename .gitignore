@@ -1,0 +1,13 @@
+# python bytecode
+*.pyc
+*.egg-info
+
+# test cache
+.hypothesis
+
+# pyenv local config
+.python-version
+
+# macOS
+.DS_Store
+
