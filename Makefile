@@ -9,5 +9,8 @@ build:
 publish-test-pypi:
 	twine upload -r testpypi dist/*
 
+publish-main-pypi:
+	twine upload dist/*
+
 clean:
 	rm -r build dist
