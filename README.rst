@@ -2,7 +2,8 @@
 sickdt
 ======
 
-Opinionated wrapper over the Python stdlib's ``datetime`` module. Avoids common gotchas with dates.
+Opinionated wrapper over the built-in ``datetime`` module.
+Exposes a subset of *just the right* functionality to avoid common gotchas with dates in Python.
 
 
     Yo, these datetimes are sick!
