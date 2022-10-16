@@ -2,6 +2,9 @@
 sickdt
 ======
 
+.. image:: https://badge.fury.io/py/sickdt.svg
+    :target: https://badge.fury.io/py/sickdt
+
 Opinionated wrapper over the built-in ``datetime`` module.
 Exposes a subset of *just the right* functionality to avoid common gotchas with dates in Python.
 
