@@ -1,16 +1,16 @@
-from sickdt import core
+import sickdt
 from datetime import datetime, timezone, timedelta
 
 
 class TestNow:
     @staticmethod
     def test_has_timezone():
-        dt = core.now()
+        dt = sickdt.now()
         assert dt.tzinfo is not None
 
     @staticmethod
     def test_is_utc():
-        dt = core.now()
+        dt = sickdt.now()
         dt.utcoffset() == 0
 
 
@@ -19,8 +19,8 @@ class TestUnix:
         @staticmethod
         def test_ts_instant_ts():
             ts1 = 1665862645
-            instant = core.from_unix(ts1)
-            ts2 = core.unix(instant)
+            instant = sickdt.from_unix(ts1)
+            ts2 = sickdt.unix(instant)
 
             assert ts2 == ts1
 
@@ -37,8 +37,8 @@ class TestUnix:
                     microsecond=42,
                     tzinfo=timezone.utc,
                 )
-                ts = core.unix(instant1)
-                instant2 = core.from_unix(ts)
+                ts = sickdt.unix(instant1)
+                instant2 = sickdt.from_unix(ts)
 
                 assert instant2 == instant1
 
@@ -55,8 +55,8 @@ class TestUnix:
                     microsecond=42,
                     tzinfo=start_tz,
                 )
-                ts = core.unix(instant1)
-                instant2 = core.from_unix(ts)
+                ts = sickdt.unix(instant1)
+                instant2 = sickdt.from_unix(ts)
 
                 assert instant2.astimezone(timezone.utc) == instant1.astimezone(
                     timezone.utc
