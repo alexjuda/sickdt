@@ -1,7 +1,5 @@
 from datetime import datetime, timezone, timedelta
 
-import pytest
-
 import sickdt
 
 
